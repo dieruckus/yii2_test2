@@ -210,4 +210,9 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionShow()
+    {
+       //$town = Towns::find->all;
+        return $this->render('show');
+    }
 }
