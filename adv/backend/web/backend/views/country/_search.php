@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\TownSearch */
+/* @var $model common\models\CountrySearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="town-search">
+<div class="country-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'tid') ?>
+    <?= $form->field($model, 'cid') ?>
 
-    <?= $form->field($model, 'town') ?>
+    <?= $form->field($model, 'country') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

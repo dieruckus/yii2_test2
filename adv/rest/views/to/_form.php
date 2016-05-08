@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="town-form">
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'town')->textInput(['maxlength' => true]) ?>

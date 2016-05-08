@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Town;
-use common\models\TownSearch;
+use common\models\Country;
+use common\models\CountrySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TownController implements the CRUD actions for Town model.
+ * CountryController implements the CRUD actions for Country model.
  */
-class TownController extends Controller
+class CountryController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class TownController extends Controller
     }
 
     /**
-     * Lists all Town models.
+     * Lists all Country models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TownSearch();
+        $searchModel = new CountrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,28 +45,31 @@ class TownController extends Controller
     }
 
     /**
-     * Displays a single Town model.
+     * Displays a single Country model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
+
+        $country = $this->findModel($id);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $country,
         ]);
     }
 
     /**
-     * Creates a new Town model.
+     * Creates a new Country model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Town();
+        $model = new Country();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->tid]);
+            return $this->redirect(['view', 'id' => $model->cid]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +78,7 @@ class TownController extends Controller
     }
 
     /**
-     * Updates an existing Town model.
+     * Updates an existing Country model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +88,7 @@ class TownController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->tid]);
+            return $this->redirect(['view', 'id' => $model->cid]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,28 +97,29 @@ class TownController extends Controller
     }
 
     /**
-     * Deletes an existing Town model.
+     * Deletes an existing Country model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Town model based on its primary key value.
+     * Finds the Country model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Town the loaded model
+     * @return Country the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Town::findOne($id)) !== null) {
+        if (($model = Country::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

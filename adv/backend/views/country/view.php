@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Town */
+/* @var $model common\models\Country */
 
-$this->title = $model->tid;
-$this->params['breadcrumbs'][] = ['label' => 'Towns', 'url' => ['index']];
+$this->title = $model->cid;
+$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="town-view">
+<div class="country-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->tid], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->tid], [
+        <?= Html::a('Update', ['update', 'id' => $model->cid], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->cid], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,9 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'tid',
-            'town',
+            'cid',
+            'country',
         ],
     ]) ?>
+
+     <?php foreach($model->towns as $t): ?>
+        <?= $t->town  ?>
+
+    <?php endforeach ?>
 
 </div>
